@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.8.1 on win32)" generated="20201007 13:32:20.445" rpa="false">
+<suite id="s1" name="Audit New" source="C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Cards\audit_new.robot">
+<test id="s1-t1" name="Test main">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${day}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.001" endtime="20201007 13:32:25.001"></status>
+</kw>
+<kw name="Extract" library="fetch">
+<arguments>
+<arg>${input_file}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>@{conf_lines}</var>
+</assign>
+<msg timestamp="20201007 13:32:25.021" level="INFO">@{conf_lines} = [ Part Number | P23664-B21  ]</msg>
+<status status="PASS" starttime="20201007 13:32:25.003" endtime="20201007 13:32:25.021"></status>
+</kw>
+<kw name="${part_number} IN [ @{conf_lines} ]" type="for">
+<kw name="${part_number} = Part Number" type="foritem">
+<kw name="Continue For Loop If" library="BuiltIn">
+<doc>Skips the current for loop iteration if the ``condition`` is true.</doc>
+<arguments>
+<arg>'${part_number}'=='Part Number'</arg>
+</arguments>
+<msg timestamp="20201007 13:32:25.023" level="INFO">Continuing for loop from the next iteration.</msg>
+<status status="PASS" starttime="20201007 13:32:25.022" endtime="20201007 13:32:25.023"></status>
+</kw>
+<status status="PASS" starttime="20201007 13:32:25.022" endtime="20201007 13:32:25.023"></status>
+</kw>
+<kw name="${part_number} = P23664-B21 " type="foritem">
+<kw name="Continue For Loop If" library="BuiltIn">
+<doc>Skips the current for loop iteration if the ``condition`` is true.</doc>
+<arguments>
+<arg>'${part_number}'=='Part Number'</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.024" endtime="20201007 13:32:25.024"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${part_number}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.024" endtime="20201007 13:32:25.025"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${flag}</arg>
+<arg>Bold</arg>
+</arguments>
+<msg timestamp="20201007 13:32:25.026" level="INFO">${flag} = Bold</msg>
+<status status="PASS" starttime="20201007 13:32:25.025" endtime="20201007 13:32:25.026"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${content}</arg>
+<arg>0</arg>
+<arg>0</arg>
+<arg>Part Number</arg>
+<arg>${flag}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.026" endtime="20201007 13:32:25.027"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${content}</arg>
+<arg>0</arg>
+<arg>1</arg>
+<arg>Product name</arg>
+<arg>${flag}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.027" endtime="20201007 13:32:25.027"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${content}</arg>
+<arg>0</arg>
+<arg>2</arg>
+<arg>Date</arg>
+<arg>${flag}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.028" endtime="20201007 13:32:25.028"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${content}</arg>
+<arg>0</arg>
+<arg>3</arg>
+<arg>Version</arg>
+<arg>${flag}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.029" endtime="20201007 13:32:25.029"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${content}</arg>
+<arg>0</arg>
+<arg>4</arg>
+<arg>OS</arg>
+<arg>${flag}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.029" endtime="20201007 13:32:25.030"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${content}</arg>
+<arg>0</arg>
+<arg>5</arg>
+<arg>Download Page</arg>
+<arg>${flag}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.030" endtime="20201007 13:32:25.031"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${content}</arg>
+<arg>0</arg>
+<arg>6</arg>
+<arg>Description</arg>
+<arg>${flag}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.031" endtime="20201007 13:32:25.032"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${content}</arg>
+<arg>0</arg>
+<arg>7</arg>
+<arg>Severity</arg>
+<arg>${flag}</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.032" endtime="20201007 13:32:25.033"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${flag}</arg>
+<arg>False</arg>
+</arguments>
+<msg timestamp="20201007 13:32:25.033" level="INFO">${flag} = False</msg>
+<status status="PASS" starttime="20201007 13:32:25.033" endtime="20201007 13:32:25.033"></status>
+</kw>
+<kw name="Make Excel File" library="new_file">
+<arguments>
+<arg>output.xlsx</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:25.034" endtime="20201007 13:32:25.058"></status>
+</kw>
+<kw name="launch">
+<arguments>
+<arg>${part_number}</arg>
+</arguments>
+<kw name="${trial} IN RANGE [ 0 | 5 ]" type="for">
+<kw name="${trial} = 0" type="foritem">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Test try</arg>
+<arg>${part_number}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Test try">
+<arguments>
+<arg>${part_number}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>https://support.hpe.com/hpesc/public/home</arg>
+<arg>ff</arg>
+</arguments>
+<msg timestamp="20201007 13:32:25.064" level="INFO">Opening browser 'ff' to base url 'https://support.hpe.com/hpesc/public/home'.</msg>
+<msg timestamp="20201007 13:32:25.076" level="INFO">Firefox driver log is always forced to to: C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Cards\geckodriver-28.log</msg>
+<status status="PASS" starttime="20201007 13:32:25.063" endtime="20201007 13:32:44.804"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<msg timestamp="20201007 13:32:54.806" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20201007 13:32:44.804" endtime="20201007 13:32:54.806"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath:/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[1]/input[1]</arg>
+<arg>${part_number}</arg>
+</arguments>
+<msg timestamp="20201007 13:32:54.807" level="INFO">Typing text 'P23664-B21 ' into text field 'xpath:/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[1]/input[1]'.</msg>
+<msg timestamp="20201007 13:32:54.825" level="FAIL">Element with locator 'xpath:/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[1]/input[1]' not found.</msg>
+<status status="FAIL" starttime="20201007 13:32:54.806" endtime="20201007 13:32:54.825"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:32:25.061" endtime="20201007 13:32:54.826"></status>
+</kw>
+<msg timestamp="20201007 13:32:54.826" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20201007 13:32:25.060" endtime="20201007 13:32:54.826"></status>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<doc>Stops executing the enclosing for loop if the ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==True</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:32:54.827" endtime="20201007 13:32:54.827"></status>
+</kw>
+<status status="PASS" starttime="20201007 13:32:25.060" endtime="20201007 13:32:54.827"></status>
+</kw>
+<kw name="${trial} = 1" type="foritem">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Test try</arg>
+<arg>${part_number}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Test try">
+<arguments>
+<arg>${part_number}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>https://support.hpe.com/hpesc/public/home</arg>
+<arg>ff</arg>
+</arguments>
+<msg timestamp="20201007 13:32:54.829" level="INFO">Opening browser 'ff' to base url 'https://support.hpe.com/hpesc/public/home'.</msg>
+<msg timestamp="20201007 13:32:54.840" level="INFO">Firefox driver log is always forced to to: C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Cards\geckodriver-29.log</msg>
+<msg timestamp="20201007 13:33:05.424" level="FAIL">WebDriverException: Message: Failed to decode response from marionette
+</msg>
+<status status="FAIL" starttime="20201007 13:32:54.829" endtime="20201007 13:33:05.424"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:32:54.828" endtime="20201007 13:33:05.425"></status>
+</kw>
+<msg timestamp="20201007 13:33:05.425" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20201007 13:32:54.828" endtime="20201007 13:33:05.425"></status>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<doc>Stops executing the enclosing for loop if the ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==True</arg>
+</arguments>
+<status status="PASS" starttime="20201007 13:33:05.425" endtime="20201007 13:33:05.426"></status>
+</kw>
+<status status="PASS" starttime="20201007 13:32:54.827" endtime="20201007 13:33:05.426"></status>
+</kw>
+<kw name="${trial} = 2" type="foritem">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Test try</arg>
+<arg>${part_number}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Test try">
+<arguments>
+<arg>${part_number}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>https://support.hpe.com/hpesc/public/home</arg>
+<arg>ff</arg>
+</arguments>
+<msg timestamp="20201007 13:33:05.428" level="INFO">Opening browser 'ff' to base url 'https://support.hpe.com/hpesc/public/home'.</msg>
+<msg timestamp="20201007 13:33:05.441" level="INFO">Firefox driver log is always forced to to: C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Cards\geckodriver-30.log</msg>
+<status status="FAIL" starttime="20201007 13:33:05.427" endtime="20201007 13:33:08.507"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:33:05.427" endtime="20201007 13:33:08.507"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:33:05.426" endtime="20201007 13:33:08.507"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:33:05.426" endtime="20201007 13:33:08.508"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:32:25.059" endtime="20201007 13:33:08.508"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:32:25.058" endtime="20201007 13:33:08.508"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:32:25.023" endtime="20201007 13:33:08.508"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:32:25.022" endtime="20201007 13:33:08.508"></status>
+</kw>
+<status status="FAIL" starttime="20201007 13:32:24.999" endtime="20201007 13:33:08.509" critical="yes">Execution terminated by signal</status>
+</test>
+<status status="FAIL" starttime="20201007 13:32:20.451" endtime="20201007 13:33:08.516"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="Audit New">Audit New</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20201007 13:32:20.606" level="WARN">Imported library 'C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Cards\Python_files\CreateExcelFile.py' contains no keywords.</msg>
+</errors>
+</robot>
