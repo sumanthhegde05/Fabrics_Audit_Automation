@@ -24,7 +24,7 @@ def extract(filename,column_no):
 class ExcelUtility():
     def __init__(self,value):
         self.value = value
-        print ("write to excel file"+str(self.value))
+        #print ("write to excel file"+str(self.value))
 
         
     def group(self,lst, n):
@@ -92,14 +92,14 @@ class ExcelUtility():
                         self.worksheet[i].write(int(item[0]), int(item[1]), item[2],self.Head)
                 # close work book
             self.workbook.close()
-            print(self.worksheet)
+            #print(self.worksheet)
 
 file = open('config.txt')
 data=[]
 inc=-1
 for each in file:
     inc+=1
-    print (each)
+    #print (each)
     word = each.split()
     data.append([])
     for every in word:
@@ -152,7 +152,7 @@ for i in Part:
         pass
     elif i not in part_list:
         part_list.append(i)
-print(part_list)
+#print(part_list)
 for i in range (0, len(search)):
     if search[i]=='Keyword' or group[i]=='Group Name' or short_group[i]=='Group Short Name':
         pass
@@ -162,7 +162,7 @@ for i in range (0, len(search)):
         short_group_name.append(short_group[i])
         
 value=False
-
+#print(search_elem)
 for every in range (0,len(part_list)):
     value='Bold'
     content1.append([])
@@ -259,11 +259,12 @@ for every in range (0,len(part_list)):
                     content1[every].append(P[1])
                 else:
                     content1[every].append(Product[j])
-                if part_list[every] not in Product[j] :
+                if part_list[every].strip() not in Product[j] :
                     if group_name[i]=='Firmware binary posting':
-                        print(str(every))
-                        print(part_list[every])
-                        print(Product[j])
+                        #print(part_list[every]+' == '+Product[j])
+                        #print(str(every))
+                        #print(part_list[every])
+                        #print(Product[j])part_list[i]
                         content1[every].append('Blue')
                     else:
                         content1[every].append(value)
@@ -460,7 +461,7 @@ for every in range (0,len(group_name)):
                     content2[every].append(P[1])
                 else:
                     content2[every].append(Product[j])
-                if part_list[i] not in Product[j] and group_name[every]=='Firmware binary posting':
+                if part_list[i].strip() not in Product[j] and group_name[every]=='Firmware binary posting':
                     content2[every].append('Blue')
                 else:
                     content2[every].append(value)
