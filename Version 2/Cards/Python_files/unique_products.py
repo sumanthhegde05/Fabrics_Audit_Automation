@@ -5,7 +5,7 @@ import sys
 
 class ExcelUtility(object):
     def __init__(self):
-        print ("write to excel file")
+        #print ("write to excel file")
     
     def group(self,lst, n):
         """group([0,3,4,10,2,3], 2) => [(0,3), (4,10), (2,3)]
@@ -43,7 +43,7 @@ class ExcelUtility(object):
             workbook.close()
 
 output_file=sys.argv[2]+"\\Audit_"+sys.argv[3]+"\\Audit_report_unique_"+sys.argv[3]+".xlsx" 
-print(output_file)
+#print(output_file)
 input_file=sys.argv[1]
 new_file.make_excel_file(output_file)
 Part=fetch.extract(input_file,0)
@@ -61,8 +61,8 @@ inc=0
 for i in range (0, len(Product)):
     if Product[i]=='Product name':
         value='Bold' 
-    if Part[i]+Product[i] not in temp :
-        temp.append(Part[i]+Product[i])
+    if Part[i]+Product[i]+Os[i] not in temp :
+        temp.append(Part[i]+Product[i]+Os[i])
         content.append(inc)
         content.append(0)
         content.append(Part[i])
@@ -97,7 +97,7 @@ for i in range (0, len(Product)):
         content.append(value)
 
         inc+=1
-        print(inc)
+        #print(inc)
         value=False
     else:
         pass

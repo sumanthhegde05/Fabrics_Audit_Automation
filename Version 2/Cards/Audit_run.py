@@ -17,10 +17,12 @@ def main():
     date = get_date()
     os.system('cmd /c "robot -v input_file:"'+sys.argv[2]+'" -v day:"'+date+'" audit_card.robot"')
     time.sleep(10)
+    print("Fetching file name...")
     os.system('cmd /c "robot -v day:"'+date+'" fetch_file.robot"')
     time.sleep(10)
+    print("Summarizing...")
     os.system('cmd /c "py Python_files\\summary.py "'+sys.argv[2]+'" "'+date)        
-           
+    print("END")
         
 def add_options (parser):
     """
@@ -57,3 +59,4 @@ if __name__=='__main__':
     else:
         print("-h, --help for help message")
         
+#10-08-2020_12-33-11

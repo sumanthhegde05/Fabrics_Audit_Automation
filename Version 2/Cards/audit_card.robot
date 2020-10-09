@@ -19,11 +19,10 @@ ${flag}
 ${output_file}
 *** Test Cases ***
 Test main
-    log to console  ${day}
+    #log to console  ${day}
     @{conf_lines}   extract    ${input_file}     0
     FOR     ${part_number}  IN   @{conf_lines}
-        continue for loop if  '${part_number}'=='Part Number'
-        log to console  ${part_number}
+        continue for loop if  '${part_number}'=='Part Number' 
         set global variable  ${flag}  Bold
         Append to List  ${content}  0  0  Part Number  ${flag}
         Append to list  ${content}  0  1  Product name  ${flag}
@@ -37,7 +36,7 @@ Test main
         make excel file  output.xlsx
         launch  ${part_number}
         ${total_count}  get text  xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[5]/div[21]/ul[1]/li[1]/label[1]/div[1]/span[1]      
-        log to console  ${total_count}
+        log to console  ${part_number} ${total_count}
         ${condition}  run keyword and ignore error  Product loop  ${part_number}  ${total_count}
         run keyword if  '${condition}[0]'=='FAIL'  Test error entry  ${part_number} 
         close all browsers
@@ -50,26 +49,27 @@ Test main
         @{out_words}=	Split String	${out_elem}	    ${SPACE}
         run keyword if  '@{out_words}[0]'=='output_path='  set global variable  ${output_file}  @{out_words}[1]
     END
-    log to console  ${output_file}
+    #log to console  ${output_file}
     create directory  ${output_file}\\Audit_${day}
     write to excel file1    ${output_file}\\Audit_${day}\\Audit_report_consolidated_${day}.xlsx    ${content}
+
 
 *** Keywords ***
 Page loop
     [Arguments]  ${part_number}  
     FOR  ${inc}  IN RANGE  3  10
-        log to console  page:${inc}
-        log to console  ${status1}[0]
+        #log to console  page:${inc}
+        #log to console  ${status1}[0]
         Product loop  ${part_number}
         ${status1}  run keyword and ignore error  click element  xpath://span[@class='coveo-pager-next-icon']             
         sleep  20
-        log to console  ${status1}
+        #log to console  ${status1}
         ${status2}  run keyword if  '${status1}[0]'=='FAIL'  run keyword and ignore error  click element  xpath:/html[1]/body[1]/div[3]/div[2]/div[1]/div[3]/button[2]
-        log to console  ${status2}
+        #log to console  ${status2}
         run keyword and ignore error  continue for loop if  '${status2}'=='None'
         sleep  2
         ${status1}  run keyword if  '${status2}[0]'=='PASS'  run keyword and ignore error  click element  xpath://span[@class='coveo-pager-next-icon'] 
-        log to console  ${status1}
+        #log to console  ${status1}
         run keyword and ignore error  exit for loop if  '${status1}'=='None'
         run keyword and ignore error  exit for loop if  '${status1}[0]'=='FAIL'
     END
@@ -78,7 +78,7 @@ Product loop
     [Arguments]  ${part_number}  ${total_count}
     ${limit}=  Evaluate  ${total_count}+1  
     FOR  ${element}  IN RANGE  1  ${limit}
-        log to console  product:${val}
+        #log to console  product:${val}
         ${prod_name}  run keyword and ignore error  get text  xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[4]/div[2]/div[14]/div[1]/div[1]/div[${element}]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]
                                  
         continue for loop if  '${prod_name}[0]'=='FAIL'  
@@ -141,4 +141,4 @@ Test error entry
     Append to list  ${content}  ${val}    5    ${SPACE}  ${flag}
     Append to list  ${content}  ${val}    6    ${SPACE}  ${flag}
     Append to list  ${content}  ${val}    7    ${SPACE}  ${flag}
-    log to console  ${content}
+    #log to console  ${content}
