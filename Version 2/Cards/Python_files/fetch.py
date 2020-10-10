@@ -1,4 +1,6 @@
 import xlrd 
+
+
 def extract(filename,column_no): 
     loc = filename
     test=[]
@@ -8,4 +10,5 @@ def extract(filename,column_no):
     
     for i in range(sheet.nrows): 
         test.append(sheet.cell_value(i, int(column_no)))
+        
     return test
