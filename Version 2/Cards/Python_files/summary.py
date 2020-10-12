@@ -71,9 +71,9 @@ class ExcelUtility():
                 self.column1.set_text_wrap()
                 self.Head=self.workbook.add_format({'bold': True, 'align':'left' , 'align':'vcenter' , 'bg_color':'#7CFC00', 'border':1 , 'border_color':'black' , 'font_size': 12})
                 self.Head.set_text_wrap()
-                t=self.group(content_list[i],4)
+                temp = self.group(content_list[i],4)
                 
-                for item in t:
+                for item in temp:
                     if item[3]==False:
                         self.worksheet[i].write(int(item[0]), int(item[1]), item[2],self.cell_format)
                     if item[3]=='Bold':
