@@ -24,7 +24,8 @@ def extract(filename,column_no):
 
 
 class ExcelUtility():
-    
+    def __init__(self,value):
+        self.value = value
     
     def group(self,lst, n):
         return zip(*[lst[i::n] for i in range(n)])
