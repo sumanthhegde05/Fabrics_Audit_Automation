@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.8.1 on win32)" generated="20201013 13:20:01.627" rpa="false">
+<robot generator="Robot 3.2.1 (Python 3.8.1 on win32)" generated="20201013 16:07:41.132" rpa="false">
 <suite id="s1" name="Audit Card" source="C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Fabrics_Audit_Automation\Version 2\Cards\audit_card.robot">
 <test id="s1-t1" name="Test main">
 <kw name="Extract" library="fetch">
@@ -10,8 +10,8 @@
 <assign>
 <var>@{part_numbers}</var>
 </assign>
-<msg timestamp="20201013 13:20:05.144" level="INFO">@{part_numbers} = [ Part Number | P23664-B21  | P23665-B21  | P23666-B21  | P06154-B21  | P06250-B21  | P06251-B21  | R1E59A | 872726-B21  | P02012-B21  | Q7G90A | 879482-B21  | 825110-B21  | 825111-B21  | 764282-B21  ...</msg>
-<status status="PASS" starttime="20201013 13:20:05.136" endtime="20201013 13:20:05.144"></status>
+<msg timestamp="20201013 16:07:43.132" level="INFO">@{part_numbers} = [ Part Number | P23664-B21  | P23665-B21  | P23666-B21  | P06154-B21  | P06250-B21  | P06251-B21  | R1E59A | 872726-B21  | P02012-B21  | Q7G90A | 879482-B21  | 825110-B21  | 825111-B21  | 764282-B21  ...</msg>
+<status status="PASS" starttime="20201013 16:07:43.123" endtime="20201013 16:07:43.132"></status>
 </kw>
 <kw name="${part_number} IN [ @{part_numbers} ]" type="for">
 <kw name="${part_number} = Part Number" type="foritem">
@@ -20,10 +20,10 @@
 <arguments>
 <arg>'${part_number}'=='Part Number'</arg>
 </arguments>
-<msg timestamp="20201013 13:20:05.154" level="INFO">Continuing for loop from the next iteration.</msg>
-<status status="PASS" starttime="20201013 13:20:05.153" endtime="20201013 13:20:05.154"></status>
+<msg timestamp="20201013 16:07:43.133" level="INFO">Continuing for loop from the next iteration.</msg>
+<status status="PASS" starttime="20201013 16:07:43.132" endtime="20201013 16:07:43.133"></status>
 </kw>
-<status status="PASS" starttime="20201013 13:20:05.152" endtime="20201013 13:20:05.154"></status>
+<status status="PASS" starttime="20201013 16:07:43.132" endtime="20201013 16:07:43.133"></status>
 </kw>
 <kw name="${part_number} = P23664-B21 " type="foritem">
 <kw name="Continue For Loop If" library="BuiltIn">
@@ -31,7 +31,7 @@
 <arguments>
 <arg>'${part_number}'=='Part Number'</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.154" endtime="20201013 13:20:05.154"></status>
+<status status="PASS" starttime="20201013 16:07:43.133" endtime="20201013 16:07:43.133"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
@@ -39,8 +39,8 @@
 <arg>${flag}</arg>
 <arg>Bold</arg>
 </arguments>
-<msg timestamp="20201013 13:20:05.155" level="INFO">${flag} = Bold</msg>
-<status status="PASS" starttime="20201013 13:20:05.155" endtime="20201013 13:20:05.155"></status>
+<msg timestamp="20201013 16:07:43.134" level="INFO">${flag} = Bold</msg>
+<status status="PASS" starttime="20201013 16:07:43.133" endtime="20201013 16:07:43.134"></status>
 </kw>
 <kw name="Append To List" library="Collections">
 <doc>Adds ``values`` to the end of ``list``.</doc>
@@ -51,7 +51,7 @@
 <arg>Part Number</arg>
 <arg>${flag}</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.156" endtime="20201013 13:20:05.156"></status>
+<status status="PASS" starttime="20201013 16:07:43.134" endtime="20201013 16:07:43.134"></status>
 </kw>
 <kw name="Append To List" library="Collections">
 <doc>Adds ``values`` to the end of ``list``.</doc>
@@ -62,7 +62,7 @@
 <arg>Product name</arg>
 <arg>${flag}</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.156" endtime="20201013 13:20:05.157"></status>
+<status status="PASS" starttime="20201013 16:07:43.134" endtime="20201013 16:07:43.134"></status>
 </kw>
 <kw name="Append To List" library="Collections">
 <doc>Adds ``values`` to the end of ``list``.</doc>
@@ -73,7 +73,7 @@
 <arg>Date</arg>
 <arg>${flag}</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.157" endtime="20201013 13:20:05.157"></status>
+<status status="PASS" starttime="20201013 16:07:43.134" endtime="20201013 16:07:43.135"></status>
 </kw>
 <kw name="Append To List" library="Collections">
 <doc>Adds ``values`` to the end of ``list``.</doc>
@@ -84,7 +84,7 @@
 <arg>Version</arg>
 <arg>${flag}</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.157" endtime="20201013 13:20:05.157"></status>
+<status status="PASS" starttime="20201013 16:07:43.135" endtime="20201013 16:07:43.135"></status>
 </kw>
 <kw name="Append To List" library="Collections">
 <doc>Adds ``values`` to the end of ``list``.</doc>
@@ -95,7 +95,7 @@
 <arg>OS</arg>
 <arg>${flag}</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.157" endtime="20201013 13:20:05.158"></status>
+<status status="PASS" starttime="20201013 16:07:43.135" endtime="20201013 16:07:43.135"></status>
 </kw>
 <kw name="Append To List" library="Collections">
 <doc>Adds ``values`` to the end of ``list``.</doc>
@@ -106,7 +106,7 @@
 <arg>Download Page</arg>
 <arg>${flag}</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.158" endtime="20201013 13:20:05.158"></status>
+<status status="PASS" starttime="20201013 16:07:43.135" endtime="20201013 16:07:43.135"></status>
 </kw>
 <kw name="Append To List" library="Collections">
 <doc>Adds ``values`` to the end of ``list``.</doc>
@@ -117,7 +117,7 @@
 <arg>Description</arg>
 <arg>${flag}</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.158" endtime="20201013 13:20:05.158"></status>
+<status status="PASS" starttime="20201013 16:07:43.136" endtime="20201013 16:07:43.136"></status>
 </kw>
 <kw name="Append To List" library="Collections">
 <doc>Adds ``values`` to the end of ``list``.</doc>
@@ -128,7 +128,7 @@
 <arg>Severity</arg>
 <arg>${flag}</arg>
 </arguments>
-<status status="PASS" starttime="20201013 13:20:05.159" endtime="20201013 13:20:05.159"></status>
+<status status="PASS" starttime="20201013 16:07:43.136" endtime="20201013 16:07:43.136"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
@@ -136,8 +136,8 @@
 <arg>${flag}</arg>
 <arg>False</arg>
 </arguments>
-<msg timestamp="20201013 13:20:05.160" level="INFO">${flag} = False</msg>
-<status status="PASS" starttime="20201013 13:20:05.159" endtime="20201013 13:20:05.160"></status>
+<msg timestamp="20201013 16:07:43.136" level="INFO">${flag} = False</msg>
+<status status="PASS" starttime="20201013 16:07:43.136" endtime="20201013 16:07:43.137"></status>
 </kw>
 <kw name="Reach Product Page">
 <arguments>
@@ -164,34 +164,34 @@
 <arg>https://support.hpe.com/hpesc/public/home</arg>
 <arg>ff</arg>
 </arguments>
-<msg timestamp="20201013 13:20:05.162" level="INFO">Opening browser 'ff' to base url 'https://support.hpe.com/hpesc/public/home'.</msg>
-<msg timestamp="20201013 13:20:05.166" level="INFO">Firefox driver log is always forced to to: C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Fabrics_Audit_Automation\Version 2\Cards\geckodriver-3.log</msg>
-<status status="PASS" starttime="20201013 13:20:05.162" endtime="20201013 13:20:14.210"></status>
+<msg timestamp="20201013 16:07:43.138" level="INFO">Opening browser 'ff' to base url 'https://support.hpe.com/hpesc/public/home'.</msg>
+<msg timestamp="20201013 16:07:43.140" level="INFO">Firefox driver log is always forced to to: C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Fabrics_Audit_Automation\Version 2\Cards\geckodriver-6.log</msg>
+<status status="PASS" starttime="20201013 16:07:43.138" endtime="20201013 16:08:02.066"></status>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <doc>Pauses the test executed for the given time.</doc>
 <arguments>
 <arg>10</arg>
 </arguments>
-<status status="FAIL" starttime="20201013 13:20:14.212" endtime="20201013 13:20:15.520"></status>
+<status status="FAIL" starttime="20201013 16:08:02.067" endtime="20201013 16:08:06.765"></status>
 </kw>
-<status status="FAIL" starttime="20201013 13:20:05.161" endtime="20201013 13:20:15.520"></status>
+<status status="FAIL" starttime="20201013 16:07:43.137" endtime="20201013 16:08:06.765"></status>
 </kw>
-<status status="FAIL" starttime="20201013 13:20:05.161" endtime="20201013 13:20:15.520"></status>
+<status status="FAIL" starttime="20201013 16:07:43.137" endtime="20201013 16:08:06.765"></status>
 </kw>
-<status status="FAIL" starttime="20201013 13:20:05.161" endtime="20201013 13:20:15.520"></status>
+<status status="FAIL" starttime="20201013 16:07:43.137" endtime="20201013 16:08:06.765"></status>
 </kw>
-<status status="FAIL" starttime="20201013 13:20:05.160" endtime="20201013 13:20:15.521"></status>
+<status status="FAIL" starttime="20201013 16:07:43.137" endtime="20201013 16:08:06.766"></status>
 </kw>
-<status status="FAIL" starttime="20201013 13:20:05.160" endtime="20201013 13:20:15.521"></status>
+<status status="FAIL" starttime="20201013 16:07:43.137" endtime="20201013 16:08:06.766"></status>
 </kw>
-<status status="FAIL" starttime="20201013 13:20:05.154" endtime="20201013 13:20:15.521"></status>
+<status status="FAIL" starttime="20201013 16:07:43.133" endtime="20201013 16:08:06.766"></status>
 </kw>
-<status status="FAIL" starttime="20201013 13:20:05.152" endtime="20201013 13:20:15.521"></status>
+<status status="FAIL" starttime="20201013 16:07:43.132" endtime="20201013 16:08:06.766"></status>
 </kw>
-<status status="FAIL" starttime="20201013 13:20:05.134" endtime="20201013 13:20:15.527" critical="yes">Execution terminated by signal</status>
+<status status="FAIL" starttime="20201013 16:07:43.122" endtime="20201013 16:08:06.767" critical="yes">Execution terminated by signal</status>
 </test>
-<status status="FAIL" starttime="20201013 13:20:01.631" endtime="20201013 13:20:15.530"></status>
+<status status="FAIL" starttime="20201013 16:07:41.135" endtime="20201013 16:08:06.767"></status>
 </suite>
 <statistics>
 <total>
@@ -205,6 +205,6 @@
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20201013 13:20:01.750" level="WARN">Imported library 'C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Fabrics_Audit_Automation\Version 2\Cards\Python_files\CreateExcelFile.py' contains no keywords.</msg>
+<msg timestamp="20201013 16:07:41.205" level="WARN">Imported library 'C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Fabrics_Audit_Automation\Version 2\Cards\Python_files\CreateExcelFile.py' contains no keywords.</msg>
 </errors>
 </robot>
