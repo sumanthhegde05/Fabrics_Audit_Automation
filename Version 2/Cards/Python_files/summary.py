@@ -4,6 +4,7 @@ from openpyxl import Workbook, load_workbook
 from contextlib import closing
 from win32com.client import Dispatch
 import sys
+import logging
 
 
 def make_excel_file(file_name):
@@ -126,6 +127,20 @@ def get_keywords():
     return search, group, short_group
 
 
+def get_logger():
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    file_handler = logging.FileHandler("debug_main.log",mode='a')
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(logging.Formatter('%(name)s : %(levelname)s : %(funcname)s : %(lineno)s : %(message)s'))
+    """console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(logging.Formatter('%(message)s'))"""
+    logger.addHandler(file_handler)
+    #logger.addHandler(console_handler)
+    return logger
+
+
 def initialize():
     global part_list
     global group_name  
@@ -136,7 +151,7 @@ def initialize():
             pass
         elif i not in part_list:
             part_list.append(i)
-            
+    logger.info('Part numbers provided = ',part_list)
     for i in range (0, len(search)):
         
         if search[i]=='Keyword' or group[i]=='Group Name' or short_group[i]=='Group Short Name':
@@ -145,6 +160,9 @@ def initialize():
             search_elem.append(search[i])
             group_name.append(group[i])
             short_group_name.append(short_group[i])
+    logger.info("search keywords = ",search_elem)
+    logger.info("group names = ",group_name)
+    logger.info("sheet names = ",short_group_name)
 
 def summary():
     global content1
@@ -709,23 +727,33 @@ short_group_name    =   []
 
 
 if __name__=='__main__':
+    logger = get_logger()
+    logger.debug("Fetching part number and keyword froms search file")
     initialize()
+    logger.debug("Summarizing into excel sheet with each part number as separate sheets")
     summary()
+    logger.debug("Summarizing into excel sheet with each group as separate sheets")
     summary_alt()
+    logger.debug("Copying input file to the output file for reference")
     insert_input_sheet()
+    
     obj1=ExcelUtility(0)
     obj2=ExcelUtility(1)
     sheet_list1=[]
     sheet_list2=[]
     sheet_list1.append('input')
+    sheet_list2.append('input')
     
     for i in range (0,len(part_list)):
         sheet_list1.append(part_list[i])
-        
-    sheet_list2.append('input')
     
     for i in range (0,len(short_group_name)):
         sheet_list2.append(short_group_name[i])
 
     obj1.write_to_excel_file(output_file1,sheet_list1,content1)
     obj2.write_to_excel_file(output_file2,sheet_list2,content2)
+    
+    logger.info("Summary file = "+output_file1)
+    logger.info("Alternative summary file = "+output_file2)
+    
+    print("\n Output files are stored in the folder ' "+output_path+'\\Audit_'+sys.argv[2]+" '")

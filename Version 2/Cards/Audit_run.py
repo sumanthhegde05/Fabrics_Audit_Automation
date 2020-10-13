@@ -14,15 +14,25 @@ def get_date():
     return date	
 
 def main():
+    logger.debug("Getting Currrent Date and Time..")
     date = get_date()
-    os.system('cmd /c "robot -v input_file:"'+sys.argv[2]+'" -v day:"'+date+'" audit_card.robot"')
+    logger.info(date)
+    logger.debug("Running audit_card.robot file with input file and current date as parameter..")
+    print("Fetching component details of all part number...")
+    os.system('cmd /c "robot -v input_file:"'+sys.argv[2]+'" -v day:"'+date+'" --logtitle audit_card_log --reporttitle audit_card_report audit_card.robot > nul"')
+    logger.info("Logs of audit card file are collected in audit_card_log.html and audit_card_report.html files..")
     time.sleep(10)
-    print("Fetching file name...")
-    os.system('cmd /c "robot -v day:"'+date+'" fetch_file.robot"')
+    print("Fetching file names for all the components...")
+    logger.debug("Running fetch_file.robot file with current date as parameter..")
+    os.system('cmd /c "robot -v day:"'+date+'" --logtitle fetch_log --reporttitle fetch_report fetch_file.robot > nul"')
+    logger.info("Logs of audit card file are collected in audit_card_log.html and audit_card_report.html files..")
     time.sleep(10)
     print("Summarizing...")
-    os.system('cmd /c "py Python_files\\summary.py "'+sys.argv[2]+'" "'+date)        
-    print("END")
+    logger.debug("Running summary.py with input file and current date and time as parameter")
+    os.system('cmd /c "py Python_files\\summary.py "'+sys.argv[2]+'" "'+date)    
+    logger.info("Finished Successfully")    
+    print("\nFinished Successfully")
+   
         
 def add_options (parser):
     """
@@ -37,9 +47,9 @@ def initialize():
     (options, args) = parser.parse_args()
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
-    file_handler = logging.FileHandler("debug.log",mode='w')
+    file_handler = logging.FileHandler("debug_main.log",mode='w')
     file_handler.setLevel(logging.DEBUG)
-    file_handler.setFormatter(logging.Formatter('%(levelname)s : %(message)s'))
+    file_handler.setFormatter(logging.Formatter('%(name)s : %(levelname)s : %(funcname)s : %(lineno)s : %(message)s'))
     """console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(logging.Formatter('%(message)s'))"""
@@ -52,6 +62,9 @@ options , logger = initialize()
 
 if __name__=='__main__':
     if options.help:
+        logger.debug("Printing Help Message")
+        logger.info(help_message)
+        logger.debug("Exiting..")
         print(help_message)
         sys.exit()
     elif options.input != None:
