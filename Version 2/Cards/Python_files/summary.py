@@ -713,8 +713,8 @@ if __name__=='__main__':
     summary()
     summary_alt()
     insert_input_sheet()
-    obj1=ExcelUtility()
-    obj2=ExcelUtility()
+    obj1=ExcelUtility(0)
+    obj2=ExcelUtility(1)
     sheet_list1=[]
     sheet_list2=[]
     sheet_list1.append('input')
