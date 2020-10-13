@@ -132,7 +132,7 @@ def get_logger():
     logger.setLevel(logging.DEBUG)
     file_handler = logging.FileHandler("debug_main.log",mode='a')
     file_handler.setLevel(logging.DEBUG)
-    file_handler.setFormatter(logging.Formatter('%(name)s : %(levelname)s : %(lineno)s : %(message)s'))
+    file_handler.setFormatter(logging.Formatter('%(name)s : %(levelname)-8s : %(lineno)s : %(message)s'))
     """console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(logging.Formatter('%(message)s'))"""
