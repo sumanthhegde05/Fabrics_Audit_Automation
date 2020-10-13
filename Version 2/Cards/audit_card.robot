@@ -41,7 +41,7 @@ Test main
         set global variable  ${flag}  False
         Reach Product Page  ${part_number}
         ${total_count}  get text  xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[5]/div[21]/ul[1]/li[1]/label[1]/div[1]/span[1]  # getting total conut of the product (from field besides All dates in the left column)
-        log to console  ${part_number} ${total_count}
+        #log to console  ${part_number} ${total_count}
         ${condition}  run keyword and ignore error  Product loop  ${part_number}  ${total_count}
         run keyword if  '${condition}[0]'=='FAIL'  Test error entry  ${part_number} 
         close all browsers
