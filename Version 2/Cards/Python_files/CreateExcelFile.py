@@ -1,7 +1,7 @@
 import xlsxwriter
 
 
-class ExcelUtility(object):
+class CreateExcelFile(object):
     
     
     def group(self,lst, n):

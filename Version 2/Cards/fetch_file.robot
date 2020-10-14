@@ -5,7 +5,7 @@ Library    OperatingSystem
 Library    String
 Library    Process
 Library    Selenium2Library  timeout=20  run_on_failure=Nothing
-Library    CreateExcelFile.ExcelUtility
+
 Library    Python_files\\fetch.py
 Library    Collections
 Library    Python_files\\new_file.py
@@ -73,7 +73,7 @@ Test main
 
     write to excel file2  ${output_file}\\Audit_${day}\\Audit_report_unique_${day}.xlsx  ${content}
     sleep  10
-    
+    close all browsers
 
 ***Keywords***
 
@@ -86,6 +86,7 @@ Test Launch
         sleep  5
         ${stat}  run keyword and return status  Page should contain  File name
         exit for loop if  ${stat}==True
+        close all browsers
     END
 
 Test continue

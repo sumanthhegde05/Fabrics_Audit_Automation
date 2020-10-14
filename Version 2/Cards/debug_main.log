@@ -1,3 +1,3 @@
-__main__ : DEBUG   s : 17 : Getting Currrent Date and Time..
-__main__ : INFO    s : 19 : 10-13-2020_16-07-40
-__main__ : DEBUG   s : 20 : Running audit_card.robot file with input file and current date as parameter..
+__main__ : DEBUG    : 17 : Getting Currrent Date and Time..
+__main__ : INFO     : 19 : 10-14-2020_11-54-54
+__main__ : DEBUG    : 20 : Running audit_card.robot file with input file and current date as parameter..

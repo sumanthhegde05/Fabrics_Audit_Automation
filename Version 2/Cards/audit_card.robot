@@ -5,7 +5,7 @@ Library    OperatingSystem
 Library    String
 Library    Process
 Library    Selenium2Library  timeout=20  run_on_failure=Nothing
-Library    CreateExcelFile.ExcelUtility
+
 Library    Python_files\\fetch.py
 Library    Collections
 Library    python_files\\new_file.py
@@ -39,7 +39,7 @@ Test main
         Append to list  ${content}  0  6  Description  ${flag}
         Append to list  ${content}  0  7  Severity  ${flag}
         set global variable  ${flag}  False
-        Reach Product Page  ${part_number}
+        run keyword and ignore error  Reach Product Page  ${part_number}
         ${total_count}  get text  xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[5]/div[21]/ul[1]/li[1]/label[1]/div[1]/span[1]  # getting total conut of the product (from field besides All dates in the left column)
         log to console  ${part_number} ${total_count}
         ${condition}  run keyword and ignore error  Product loop  ${part_number}  ${total_count}
@@ -58,7 +58,7 @@ Test main
     log to console  ${content}
     create directory  ${output_file}\\Audit_${day}
     write to excel file1    ${output_file}\\Audit_${day}\\Audit_report_consolidated_${day}.xlsx    ${content}
-
+    close all browsers
 *** Keywords ***
 
 Page loop   # depricated
@@ -110,10 +110,11 @@ Reach Product Page
     FOR  ${trial}  IN RANGE  0  5   # Number of times that the webpage needs to be relaunched before reporting it as a Failed test.
        ${status}  run keyword and return status  Test launch  ${part_number}    # status representing the state of the web page launch. (from search page to product list page)
        exit for loop if  ${status}==True
+       close all browsers
     END
 
     run keyword if  ${status}==False  Test error entry  ${part_number}  # Report the loading error.
-
+    
 Test launch
     [Arguments]  ${part_number}
 
