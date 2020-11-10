@@ -27,7 +27,7 @@ Test main
 
     @{part_numbers}   extract    ${input_file}     0  # fetching all  the data from column 0 of input file and appending it to a list name conf_files
 
-    FOR     ${part_number}  IN   @{part_numbers}
+    FOR  ${part_number}  IN   @{part_numbers}
         continue for loop if  '${part_number}'=='Part Number' 
         set global variable  ${flag}  Bold
         Append to List  ${content}  0  0  Part Number  ${flag}
