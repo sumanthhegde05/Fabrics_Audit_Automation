@@ -45,3 +45,52 @@ __main__ : DEBUG    : 735 : Summarizing into excel sheet with each group as sepa
 __main__ : DEBUG    : 737 : Copying input file to the output file for reference
 __main__ : INFO     : 756 : Summary file = C:\Audit_report\Audit_06-02-2021_13-05-28\Audit_report_summary_06-02-2021_13-05-28.xlsx
 __main__ : INFO     : 757 : Alternative summary file = C:\Audit_report\Audit_06-02-2021_13-05-28\Audit_report_summary_alternate_06-02-2021_13-05-28.xlsx
+__main__ : DEBUG    : 545 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 546 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 548 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 544 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 545 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 547 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 549 : Copying input file to the output file for reference
+__main__ : INFO     : 570 : Summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_06-01-2021_13-15-32.xlsx
+__main__ : INFO     : 571 : Alternative summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_alternate_06-01-2021_13-15-32.xlsx
+__main__ : DEBUG    : 544 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 545 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 547 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 549 : Copying input file to the output file for reference
+__main__ : DEBUG    : 544 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 545 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 547 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 549 : Copying input file to the output file for reference
+__main__ : INFO     : 570 : Summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_06-01-2021_13-15-32.xlsx
+__main__ : INFO     : 571 : Alternative summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_alternate_06-01-2021_13-15-32.xlsx
+__main__ : DEBUG    : 542 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 543 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 545 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 547 : Copying input file to the output file for reference
+__main__ : INFO     : 568 : Summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_06-01-2021_13-15-32.xlsx
+__main__ : INFO     : 569 : Alternative summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_alternate_06-01-2021_13-15-32.xlsx
+__main__ : DEBUG    : 542 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 543 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 545 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 547 : Copying input file to the output file for reference
+__main__ : INFO     : 568 : Summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_06-01-2021_13-15-32.xlsx
+__main__ : INFO     : 569 : Alternative summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_alternate_06-01-2021_13-15-32.xlsx
+__main__ : DEBUG    : 542 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 543 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 545 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 547 : Copying input file to the output file for reference
+__main__ : INFO     : 568 : Summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_06-01-2021_13-15-32.xlsx
+__main__ : INFO     : 569 : Alternative summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_alternate_06-01-2021_13-15-32.xlsx
+__main__ : DEBUG    : 542 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 543 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 545 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 547 : Copying input file to the output file for reference
+__main__ : INFO     : 568 : Summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_06-01-2021_13-15-32.xlsx
+__main__ : INFO     : 569 : Alternative summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_alternate_06-01-2021_13-15-32.xlsx
+__main__ : DEBUG    : 505 : Fetching part number and keyword froms search file
+__main__ : DEBUG    : 506 : Summarizing into excel sheet with each part number as separate sheets
+__main__ : DEBUG    : 508 : Summarizing into excel sheet with each group as separate sheets
+__main__ : DEBUG    : 510 : Copying input file to the output file for reference
+__main__ : INFO     : 531 : Summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_06-01-2021_13-15-32.xlsx
+__main__ : INFO     : 532 : Alternative summary file = C:\Audit_report\Audit_06-01-2021_13-15-32\Audit_report_summary_alternate_06-01-2021_13-15-32.xlsx

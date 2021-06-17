@@ -1,12 +1,13 @@
 ==============================================================================
 Audit Card                                                                    
 ==============================================================================
-Test main                                                             P23664-B21  (210)
-| FAIL |
+Test main                                                             | FAIL |
 Execution terminated by signal
 ------------------------------------------------------------------------------
 Audit Card                                                            | FAIL |
 1 critical test, 0 passed, 1 failed
 1 test total, 0 passed, 1 failed
 ==============================================================================
-Output:  C:\Users\ssumanth\OneDrive - Hewlett Packard Enterprise\Documents\Projects\Fabrics_Audit_Automation\Version 2\Cards\output.xml
+Output:  C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Fabrics_Audit_Automation\Version 2\Cards\output.xml
+Log:     C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Fabrics_Audit_Automation\Version 2\Cards\log.html
+Report:  C:\Users\ssumanth\Desktop\Automation\Fabrics_Audit_Automation\Fabrics_Audit_Automation\Version 2\Cards\report.html

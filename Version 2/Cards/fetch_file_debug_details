@@ -1,0 +1,13 @@
+==============================================================================
+Fetch File                                                                    
+==============================================================================
+Test main                                                             | FAIL |
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Audit_report\\Audit_06-02-2021_12-12-16\\Audit_report_unique_06-02-2021_12-12-16.xlsx'
+------------------------------------------------------------------------------
+Fetch File                                                            | FAIL |
+1 critical test, 0 passed, 1 failed
+1 test total, 0 passed, 1 failed
+==============================================================================
+Output:  C:\Users\ssumanth\OneDrive - Hewlett Packard Enterprise\Documents\Projects\Fabrics_Audit_Automation\Version 2\Cards\output.xml
+Log:     C:\Users\ssumanth\OneDrive - Hewlett Packard Enterprise\Documents\Projects\Fabrics_Audit_Automation\Version 2\Cards\fetch_log.html
+Report:  C:\Users\ssumanth\OneDrive - Hewlett Packard Enterprise\Documents\Projects\Fabrics_Audit_Automation\Version 2\Cards\fetch_report.html
