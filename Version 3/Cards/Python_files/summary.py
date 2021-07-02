@@ -1,8 +1,7 @@
 from re import A
 import xlsxwriter
-from openpyxl import Workbook, load_workbook
+from openpyxl import Workbook
 from contextlib import closing
-from win32com.client import Dispatch
 import sys
 import logging
 import pandas as pd
@@ -36,9 +35,22 @@ CLass/Functions and its definition:
                     Column0    = Color:Black , Style:Bold , Background:Purple
                     Column1    = Color:Black , Style:Bold , Background:Cyan
                     Header     = Color:Black , Style:Bold , Background:Yellow 
+                    
+    4. get_output_path() --> str:
+            Returns the ouput path fecthed from the config file.
+            
+    5. create_output_files(output_path) --> str , str, str :
+            Returns three strings containing input file name , summary file name and alternate summary file name respectively.
+            
+    6. def get_keywords() --> list, list, list: 
+            Returns three lists containing search keywords, group name and group short name respectvely.
+            
+    7. def def get_logger() --> logger object:
+            Creates and returns a logger object by defining its attributes.
+            
+    8. def add_to_summary_content() --> None:
+            Method is used to add the data and its format to a specific row and column position.
 """
-
-
 
 
 
@@ -135,10 +147,10 @@ class ExcelUtility():
                 except:
                     print("error",item)
                     
-        self.workbook.close()
+        self.workbook.close()               # Saves the entire work
         
 
-def get_output_path():
+def get_output_path():                  # Fetching the output path from the config file
     file = open('config.txt')
     data=[]
     inc=-1
@@ -154,45 +166,42 @@ def get_output_path():
         return data[inc][1]
     
 
-def create_output_files(output_path):
-    input_file                  =   output_path+'\\Audit_'+sys.argv[2]+'\\Audit_report_unique_'+sys.argv[2]+'.xlsx'
-    summary_output_file         =   output_path+'\\Audit_'+sys.argv[2]+'\\Audit_report_summary_'+sys.argv[2]+'.xlsx'
-    alt_summary_output_file     =   output_path+'\\Audit_'+sys.argv[2]+'\\Audit_report_summary_alternate_'+sys.argv[2]+'.xlsx'
+def create_output_files(output_path):   # Creating output summary files.
+    input_file                  =   output_path+'\\Audit_'+sys.argv[2]+'\\Audit_report_unique_'+sys.argv[2]+'.xlsx'                 # Input file will be the consolidated sheet.
+    summary_output_file         =   output_path+'\\Audit_'+sys.argv[2]+'\\Audit_report_summary_'+sys.argv[2]+'.xlsx'                # Audit_report_summary contains the data sorted as per the part numbers/sheet.
+    alt_summary_output_file     =   output_path+'\\Audit_'+sys.argv[2]+'\\Audit_report_summary_alternate_'+sys.argv[2]+'.xlsx'      # Audit_report_summary_alternate contains the data stored as per the group name/sheet.
     make_excel_file(summary_output_file)
     make_excel_file(alt_summary_output_file)
     return input_file, summary_output_file, alt_summary_output_file
 
 
-def get_keywords():
-    search = extract('Python_files\\search.xlsx',0)
-    group = extract('Python_files\\search.xlsx',1)
-    short_group = extract('Python_files\\search.xlsx',2)
-    return search, group, short_group
+def get_keywords():                     # Fetching keywords from the keywords excel file.
+    search = extract('keywords.xlsx',0)     # list of  keyword for the respective grups
+    group = extract('keywords.xlsx',1)      # list of group names 
+    short_group = extract('keywords.xlsx',2)    # list of short names for the group (short name is required because the sheet name in excel has word limit.)
+    return search, group, short_group           
 
 
-def get_logger():
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-    file_handler = logging.FileHandler("debug_main.log",mode='a')
-    file_handler.setLevel(logging.DEBUG)
-    file_handler.setFormatter(logging.Formatter('%(name)s : %(levelname)-8s : %(lineno)s : %(message)s'))
-    """console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setLevel(logging.INFO)
-    console_handler.setFormatter(logging.Formatter('%(message)s'))
-    logger.addHandler(console_handler)"""
+def get_logger():                       # Method to create a logger object which is used to generate debug logs.
+    logger = logging.getLogger(__name__)                                                                        # setting a name="script name" to the logger object.
+    file_handler = logging.FileHandler("debug_main.log",mode='a')                                               # creating a file handler.
+    file_handler.setLevel(logging.DEBUG)                                                                        # Handler level is set to DEBUG so that all the entries are made to the debug file.
+    file_handler.setFormatter(logging.Formatter('%(name)s : %(levelname)-8s : %(lineno)s : %(message)s'))       # Entry format
+    console_handler = logging.StreamHandler(sys.stdout)                                                         # Creating a console handler to display the ouput in the console.
+    console_handler.setLevel(logging.INFO)                                                                      # level is set to info so that only INFO and higher level messages are diplayed. (debug messages are excluded).
+    console_handler.setFormatter(logging.Formatter('%(message)s'))                                              # Dislpay format
+    logger.addHandler(console_handler)
     logger.addHandler(file_handler)
     return logger
 
 
 
-
-
-def add_to_summary_content(position,row,column,value,format):
+def add_to_summary_content(position,row,column,value,format):       # method to add to the global list of contents 
     global summary_content
-    summary_content[position-1].append(row)
+    summary_content[position-1].append(row)         # row-column => position of the cell
     summary_content[position-1].append(column)
-    summary_content[position-1].append(value)
-    summary_content[position-1].append(format)
+    summary_content[position-1].append(value)       # Value to be filled in the cell
+    summary_content[position-1].append(format)      # Format of the cell
 
 
 def summary():
