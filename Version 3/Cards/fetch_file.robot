@@ -60,6 +60,7 @@ Test main
     FOR  ${inc}  IN RANGE  1  ${size} 
         ${err}  run keyword and ignore error  Test Launch  ${inc}  ${download}
         ${file_name2}  run keyword if  '${err}[0]'=='PASS'  Test continue
+        log to console  ${file_name2} ${download}[${inc}]
         run keyword if  ${err}=='FAIL'  set test variable  ${file_name2}  ${space}
         Append to List  ${content}  ${inc}  0  ${part}[${inc}]  ${flag}
         Append to list  ${content}  ${inc}  1  ${product}[${inc}]  ${flag}
@@ -92,7 +93,7 @@ Test Launch
 
 Test continue
     FOR  ${val}  IN RANGE  3  20
-        ${condition}    ${curr_name}   run keyword and ignore error    get text    xpath:/html[1]/body[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr[${val}]/td[2]
+        ${condition}    ${curr_name}   run keyword and ignore error    get text    xpath:/html[1]/body[1]/div[2]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr[${val}]/td[2]
         ${status}  run keyword and return status  should contain  ${curr_name}  .sig
         #log to console  ${status}
         exit for loop if  ${status}==True

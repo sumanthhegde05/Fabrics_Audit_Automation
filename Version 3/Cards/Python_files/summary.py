@@ -183,7 +183,8 @@ def get_keywords():                     # Fetching keywords from the keywords ex
 
 
 def get_logger():                       # Method to create a logger object which is used to generate debug logs.
-    logger = logging.getLogger(__name__)                                                                        # setting a name="script name" to the logger object.
+    logger = logging.getLogger(__name__)    # setting a name="script name" to the logger object.
+    logger.setLevel(logging.DEBUG)
     file_handler = logging.FileHandler("debug_main.log",mode='a')                                               # creating a file handler.
     file_handler.setLevel(logging.DEBUG)                                                                        # Handler level is set to DEBUG so that all the entries are made to the debug file.
     file_handler.setFormatter(logging.Formatter('%(name)s : %(levelname)-8s : %(lineno)s : %(message)s'))       # Entry format
@@ -196,12 +197,12 @@ def get_logger():                       # Method to create a logger object which
 
 
 
-def add_to_summary_content(position,row,column,value,format):       # method to add to the global list of contents 
+def add_to_summary_content(row,column,value,format):       # method to add to the global list of contents 
     global summary_content
-    summary_content[position-1].append(row)         # row-column => position of the cell
-    summary_content[position-1].append(column)
-    summary_content[position-1].append(value)       # Value to be filled in the cell
-    summary_content[position-1].append(format)      # Format of the cell
+    summary_content[-1].append(row)         # row-column =>  of the cell
+    summary_content[-1].append(column)
+    summary_content[-1].append(value)       # Value to be filled in the cell
+    summary_content[-1].append(format)      # Format of the cell
 
 
 def summary():
@@ -211,19 +212,19 @@ def summary():
         summary_content.append([])
         
         inc=0
-        add_to_summary_content(item,inc,0,Input_part_numbers[item],'Header')
-        add_to_summary_content(item,inc,1,Card_name[item],'Header')
+        add_to_summary_content(inc,0,Input_part_numbers[item],'Header')
+        add_to_summary_content(inc,1,Card_name[item],'Header')
         
         inc+=1
-        add_to_summary_content(item,inc,0,'Group Name','Bold')
-        add_to_summary_content(item,inc,1,'Product Name','Bold')
-        add_to_summary_content(item,inc,2,'Date','Bold')
-        add_to_summary_content(item,inc,3,'Version','Bold')
-        add_to_summary_content(item,inc,4,'OS','Bold')
-        add_to_summary_content(item,inc,5,'File name','Bold')
-        add_to_summary_content(item,inc,6,'Download_URL','Bold')
-        add_to_summary_content(item,inc,7,'Description','Bold')
-        add_to_summary_content(item,inc,8,'Severity','Bold')
+        add_to_summary_content(inc,0,'Group Name','Bold')
+        add_to_summary_content(inc,1,'Product Name','Bold')
+        add_to_summary_content(inc,2,'Date','Bold')
+        add_to_summary_content(inc,3,'Version','Bold')
+        add_to_summary_content(inc,4,'OS','Bold')
+        add_to_summary_content(inc,5,'File name','Bold')
+        add_to_summary_content(inc,6,'Download_URL','Bold')
+        add_to_summary_content(inc,7,'Description','Bold')
+        add_to_summary_content(inc,8,'Severity','Bold')
         
         for i in range (1,len(group_names)):    # Iterating through list of data fetched from the keyword xlsx.
             group_name_flag=True                # Flag used to keep track of the elements that come under the same group.
@@ -231,9 +232,14 @@ def summary():
             
             for j in range (1,len(Product_name)):   # Itereatig through list of products fetched from the unique report.
                 
-                if group_names[i]=='Mellanox OFED' and OFED4_support[item]=='NO':
+                if group_names[i]=='Mellanox OFED 4.x' and OFED4_support[item]=='NO':
                     condition_status_check=True
                     break
+                
+                if group_names[i]=='Mellanox OFED 5.x' and OFED5_support[item]=='NO':
+                    condition_status_check=True
+                    break
+                
                 elif group_names[i]=='WinOF' and WinOF_support[item]=='NO' :
                     condition_status_check=True
                     break
@@ -255,76 +261,103 @@ def summary():
                 elif 'Firmware binary' in group_names[i] and FW_binary_support[item]=='NO':
                     condition_status_check=True
                     break
+                
+                elif 'FWPKG' in group_names[i] and FWPKG_support[item]=='NO':
+                    condition_status_check=True
+                    break
+                
+                
+                
+                elif search_elem[i] in str(File_name[j]) and Input_part_numbers[item]==Part_numbers[j]:
+                    inc+=1 
+                    if group_name_flag==True:
+                        add_to_summary_content(inc,0,group_names[i],'Column1')
+                        group_name_flag=False
+                    else:
+                        add_to_summary_content(inc,0,'','Column1')
+                        
+                    add_to_summary_content(inc,1,Product_name[j],False)
+                    add_to_summary_content(inc,2,Date[j],False)
+                    add_to_summary_content(inc,3,Version[j],False)
+                    add_to_summary_content(inc,4,Os[j],False)
+                    add_to_summary_content(inc,5,File_name[j],False)
+                    add_to_summary_content(inc,6,Download_url[j],False)
+                    add_to_summary_content(inc,7,Description[j],False)
+                    add_to_summary_content(inc,8,Severity[j],False)
+                
                 elif search_elem[i] in Product_name[j] and Input_part_numbers[item]==Part_numbers[j]:
                     
                     inc+=1 
                     if group_name_flag==True:
-                        add_to_summary_content(item,inc,0,group_names[i],'Column1')
+                        add_to_summary_content(inc,0,group_names[i],'Column1')
                         group_name_flag=False
                     else:
-                        add_to_summary_content(item,inc,0,'','Column1')
+                        add_to_summary_content(inc,0,'','Column1')
                         
-                    """
-                    if group_names[i]=='Mellanox OFED':
-                        P = Product_name[j].split('for')[-1]
-                        summary_content[item].append(P[1])
-                    else:
-                        summary_content[item].append(Product_name[j])"""
+                    
+                    
+                        
                     
                     
                     if Input_part_numbers[item].strip() not in Product_name[j] :            # To check weather the part number is matching with the product name
                         
                         if group_names[i]=='Firmware binary posting':                       # Only for FW Binary postings.
-                            add_to_summary_content(item,inc,1,Product_name[j],'Blue')       # If there is no match highlight with blue colour
+                            add_to_summary_content(inc,1,Product_name[j],'Blue')       # If there is no match highlight with blue colour
 
                         else:
-                            add_to_summary_content(item,inc,1,Product_name[j],False)       
+                            add_to_summary_content(inc,1,Product_name[j],False)       
                             
                     else:
-                        add_to_summary_content(item,inc,1,Product_name[j],False)
+                        add_to_summary_content(inc,1,Product_name[j],False)
+                        
                     
-                    add_to_summary_content(item,inc,2,Date[j],False)
-                    add_to_summary_content(item,inc,3,Version[j],False)
-                    add_to_summary_content(item,inc,4,Os[j],False)
+                    
+                    add_to_summary_content(inc,2,Date[j],False)
+                    add_to_summary_content(inc,3,Version[j],False)
+                    add_to_summary_content(inc,4,Os[j],False)
+                    
                                     
                     if File_name[j]=='Not Found':
-                        add_to_summary_content(item,inc,5,File_name[j],'Red_Bold')      # Making 'File not found' as Red Bold characters.
+                        add_to_summary_content(inc,5,File_name[j],'Red_Bold')      # Making 'File not found' as Red Bold characters.
                     else:
-                        add_to_summary_content(item,inc,5,File_name[j],False)
+                        add_to_summary_content(inc,5,File_name[j],False)
                     
-                    add_to_summary_content(item,inc,6,Download_url[j],False)
-                    add_to_summary_content(item,inc,7,Description[j],False)
-                    add_to_summary_content(item,inc,9,Severity[j],False)
+                    add_to_summary_content(inc,6,Download_url[j],False)
+                    add_to_summary_content(inc,7,Description[j],False)
+                    add_to_summary_content(inc,8,Severity[j],False)
+                    
+                    
                     
         
             if group_name_flag==True:
                 inc+=1
-                add_to_summary_content(item,inc,0,group_names[i],'Column1')
+                add_to_summary_content(inc,0,group_names[i],'Column1')
                 
             
                 if condition_status_check==True:                    # If it is true then the respective group is not supported by the card according to the input file.
-                    add_to_summary_content(item,inc,1,'Not Supported','Green_Bold')
+                    add_to_summary_content(inc,1,'Not Supported','Green_Bold')
                     condition_status_check=False
+                    
                 elif group_names[i]=='Firmware binary posting':     # If it is Flase then the group is supported by the card but there was no product found.
-                    add_to_summary_content(item,inc,1,'No firmware posting for '+Input_part_numbers[item-1]+' found','Red_Bold')
+                    add_to_summary_content(inc,1,'No firmware posting for '+Input_part_numbers[item-1]+' found','Red_Bold')
                 else:
-                    add_to_summary_content(item,inc,1,'No Products Found','Red_Bold')
+                    add_to_summary_content(inc,1,'No Products Found','Red_Bold')
                 
-                add_to_summary_content(item,inc,2,' ',False)
-                add_to_summary_content(item,inc,3,' ',False)
-                add_to_summary_content(item,inc,4,' ',False)
-                add_to_summary_content(item,inc,5,' ',False)
-                add_to_summary_content(item,inc,6,' ',False)
-                add_to_summary_content(item,inc,7,' ',False)
-                add_to_summary_content(item,inc,8,' ',False)
+                add_to_summary_content(inc,2,' ',False)
+                add_to_summary_content(inc,3,' ',False)
+                add_to_summary_content(inc,4,' ',False)
+                add_to_summary_content(inc,5,' ',False)
+                add_to_summary_content(inc,6,' ',False)
+                add_to_summary_content(inc,7,' ',False)
+                add_to_summary_content(inc,8,' ',False)
 
 
-def add_to_alt_summary_content(position,row,column,value,format):
+def add_to_alt_summary_content(row,column,value,format):
     global alt_summary_content
-    alt_summary_content[position-1].append(row)
-    alt_summary_content[position-1].append(column)
-    alt_summary_content[position-1].append(value)
-    alt_summary_content[position-1].append(format)
+    alt_summary_content[-1].append(row)
+    alt_summary_content[-1].append(column)
+    alt_summary_content[-1].append(value)
+    alt_summary_content[-1].append(format)
     
 
 def summary_alt():
@@ -334,19 +367,19 @@ def summary_alt():
         alt_summary_content.append([])
         
         inc=0
-        add_to_alt_summary_content(item,inc,0,group_names[item],'Header')
+        add_to_alt_summary_content(inc,0,group_names[item],'Header')
     
         inc+=1
-        add_to_alt_summary_content(item,inc,0,'Card Name','Bold')
-        add_to_alt_summary_content(item,inc,1,'Part Number','Bold')
-        add_to_alt_summary_content(item,inc,2,'Product Name','Bold')
-        add_to_alt_summary_content(item,inc,3,'Date','Bold')
-        add_to_alt_summary_content(item,inc,4,'Version','Bold')
-        add_to_alt_summary_content(item,inc,5,'OS','Bold')
-        add_to_alt_summary_content(item,inc,0,'File Name','Bold')
-        add_to_alt_summary_content(item,inc,0,'Download_URL','Bold')
-        add_to_alt_summary_content(item,inc,0,'Description','Bold')
-        add_to_alt_summary_content(item,inc,0,'Severity','Bold')
+        add_to_alt_summary_content(inc,0,'Card Name','Bold')
+        add_to_alt_summary_content(inc,1,'Part Number','Bold')
+        add_to_alt_summary_content(inc,2,'Product Name','Bold')
+        add_to_alt_summary_content(inc,3,'Date','Bold')
+        add_to_alt_summary_content(inc,4,'Version','Bold')
+        add_to_alt_summary_content(inc,5,'OS','Bold')
+        add_to_alt_summary_content(inc,6,'File Name','Bold')
+        add_to_alt_summary_content(inc,7,'Download_URL','Bold')
+        add_to_alt_summary_content(inc,8,'Description','Bold')
+        add_to_alt_summary_content(inc,9,'Severity','Bold')
         
         for i in range (1,len(Input_part_numbers)):
             group_name_flag=True
@@ -354,9 +387,14 @@ def summary_alt():
             
             for j in range (1,len(Product_name)):
                     
-                if group_names[item]=='Mellanox OFED' and OFED4_support[i]=='NO':
+                if group_names[item]=='Mellanox OFED 4.x' and OFED4_support[i]=='NO':
                     condition_status_check=True
                     break
+                
+                if group_names[item]=='Mellanox OFED 5.x' and OFED5_support[i]=='NO':
+                    condition_status_check=True
+                    break
+                
                 elif group_names[item]=='WinOF' and WinOF_support[i]=='NO' :
                     condition_status_check=True
                     break
@@ -378,61 +416,88 @@ def summary_alt():
                 elif 'Firmware binary' in group_names[item] and FW_binary_support[i]=='NO':
                     condition_status_check=True
                     break
+                
+                elif 'FWPKG' in group_names[item] and FWPKG_support[i]=='NO':
+                    condition_status_check=True
+                    break
+                
+                
+                elif search_elem[item] in str(File_name[j]) and Input_part_numbers[i]==Part_numbers[j]:
+                    inc+=1 
+                    if group_name_flag==True:
+                        add_to_alt_summary_content(inc,0,Card_name[i],'Column0')
+                        add_to_alt_summary_content(inc,1,Input_part_numbers[i],'Column1')
+                        group_name_flag=False
+                    else:
+                        add_to_alt_summary_content(inc,0,' ','Column0')
+                        add_to_alt_summary_content(inc,1,' ','Column1')
+                        
+                    add_to_alt_summary_content(inc,2,Product_name[j],False)
+                    add_to_alt_summary_content(inc,3,Date[j],False)
+                    add_to_alt_summary_content(inc,4,Version[j],False)
+                    add_to_alt_summary_content(inc,5,Os[j],False)
+                    add_to_alt_summary_content(inc,6,File_name[j],False)
+                    add_to_alt_summary_content(inc,7,Download_url[j],False)
+                    add_to_alt_summary_content(inc,8,Description[j],False)
+                    add_to_alt_summary_content(inc,9,Severity[j],False)
+                    
+                
                 elif search_elem[item] in Product_name[j] and Input_part_numbers[i]==Part_numbers[j]:
                     inc+=1 
-                    
+                
+                
                 
                     
                     if group_name_flag==True:
-                        add_to_alt_summary_content(item,inc,0,Card_name[i],'Column0')
-                        add_to_alt_summary_content(item,inc,1,Input_part_numbers[i],'Column1')
+                        add_to_alt_summary_content(inc,0,Card_name[i],'Column0')
+                        add_to_alt_summary_content(inc,1,Input_part_numbers[i],'Column1')
                         group_name_flag=False
                     else:
-                        add_to_alt_summary_content(item,inc,0,' ','Column0')
-                        add_to_alt_summary_content(item,inc,1,' ','Column1')
+                        add_to_alt_summary_content(inc,0,' ','Column0')
+                        add_to_alt_summary_content(inc,1,' ','Column1')
                         
                         
                     if Input_part_numbers[i].strip() not in Product_name[j] and group_names[item]=='Firmware binary posting':
-                        add_to_alt_summary_content(item,inc,2,Product_name[j],'Blue')
+                        add_to_alt_summary_content(inc,2,Product_name[j],'Blue')
                         
                     else:
-                        add_to_alt_summary_content(item,inc,2,Product_name[j],False)
+                        add_to_alt_summary_content(inc,2,Product_name[j],False)
                         
-                    add_to_alt_summary_content(item,inc,3,Date[j],False)
-                    add_to_alt_summary_content(item,inc,4,Version[j],False)
-                    add_to_alt_summary_content(item,inc,5,Os[j],False)
+                    add_to_alt_summary_content(inc,3,Date[j],False)
+                    add_to_alt_summary_content(inc,4,Version[j],False)
+                    add_to_alt_summary_content(inc,5,Os[j],False)
                     
                     if File_name[j]=='Not Found':
-                        add_to_alt_summary_content(item,inc,6,File_name[j],'Red_Bold')
+                        add_to_alt_summary_content(inc,6,File_name[j],'Red_Bold')
                     else:
-                        add_to_alt_summary_content(item,inc,6,File_name[j],False)
+                        add_to_alt_summary_content(inc,6,File_name[j],False)
                     
-                    add_to_alt_summary_content(item,inc,7,Download_url[j],False)
-                    add_to_alt_summary_content(item,inc,8,Description[j],False)
-                    add_to_alt_summary_content(item,inc,7,Severity[j],False)
+                    add_to_alt_summary_content(inc,7,Download_url[j],False)
+                    add_to_alt_summary_content(inc,8,Description[j],False)
+                    add_to_alt_summary_content(inc,9,Severity[j],False)
         
             if group_name_flag==True:
                 inc+=1
                 
-                add_to_alt_summary_content(item,inc,0,Card_name[i],'Column0')
-                add_to_alt_summary_content(item,inc,1,Input_part_numbers[i],'Column1')
+                add_to_alt_summary_content(inc,0,Card_name[i],'Column0')
+                add_to_alt_summary_content(inc,1,Input_part_numbers[i],'Column1')
                 
                 if condition_status_check==True:
-                    add_to_alt_summary_content(item,inc,2,'Not Supported','Green_Bold')
+                    add_to_alt_summary_content(inc,2,'Not Supported','Green_Bold')
                     condition_status_check=False
                 elif group_names[item]=='Firmware binary posting':
-                    add_to_alt_summary_content(item,inc,2,'No firmware posting for '+Input_part_numbers[i]+' found','Red_Bold')
+                    add_to_alt_summary_content(inc,2,'No firmware posting for '+Input_part_numbers[i]+' found','Red_Bold')
                 else:
-                    add_to_alt_summary_content(item,inc,2,'No Products found','Red_Bold')
+                    add_to_alt_summary_content(inc,2,'No Products found','Red_Bold')
 
                 
-                add_to_summary_content(item,inc,3,' ',False)
-                add_to_summary_content(item,inc,4,' ',False)
-                add_to_summary_content(item,inc,5,' ',False)
-                add_to_summary_content(item,inc,6,' ',False)
-                add_to_summary_content(item,inc,7,' ',False)
-                add_to_summary_content(item,inc,8,' ',False)
-                add_to_summary_content(item,inc,9,' ',False)
+                add_to_alt_summary_content(inc,3,' ',False)
+                add_to_alt_summary_content(inc,4,' ',False)
+                add_to_alt_summary_content(inc,5,' ',False)
+                add_to_alt_summary_content(inc,6,' ',False)
+                add_to_alt_summary_content(inc,7,' ',False)
+                add_to_alt_summary_content(inc,8,' ',False)
+                add_to_alt_summary_content(inc,9,' ',False)
                 
 
 def add_to_input_sheet_content(row,column,value,format):
@@ -542,5 +607,7 @@ if __name__=='__main__':
     
     logger.info("Summary file = "+str(summary_output_file))
     logger.info("Alternative summary file = "+str(alt_summary_output_file))
+    
+    logger.debug(str(summary_content))
     
     print("\n Output files are stored in the folder ' "+output_path+'\\Audit_'+sys.argv[2]+" '")
